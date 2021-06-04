@@ -34,10 +34,25 @@ namespace ConsoleApp
             {
                 sw = new StreamWriter(path, true);
             }
-        Console.WriteLine("tekst: ");
-        string tekst = Console.ReadLine();
-        sw.WriteLine(tekst);
-        sw.Close();
+            Console.WriteLine("tekst: ");
+            string tekst = Console.ReadLine();
+
+            sw.WriteLine(tekst);
+            sw.Close();
+        }
+
+
+        static void ReadingPlaneFile()
+        {
+            string path = @"samoloty.txt";
+            StreamReader sr = File.OpenText(path);
+            string s = "";
+            int i = 1;
+            while((s = sr.ReadLine()) != null)
+            {
+                Console.WriteLine(i++ + "." + s);
+            }
+            sr.Close();
         }
 
 
@@ -65,7 +80,6 @@ namespace ConsoleApp
         {
             while (!exit)
             {
-                CreatingPlaneFile();
                 Console.Clear();
                 PrintHeader();
                 PrintMenu();
@@ -166,9 +180,9 @@ namespace ConsoleApp
         {
             Console.Clear();
 
-            Console.WriteLine("+---------------------------------------------------------------------------------------------------------------------+\n\n\n");
-            //wypisywanie samolotow z pliku w formacie | id | typ | 
-            Console.WriteLine("1) Dodawanie samolotu. ");
+            Console.WriteLine("+---------------------------------------------------------------------------------------------------------------------+");
+            ReadingPlaneFile();
+            Console.WriteLine("\n\n\n1) Dodawanie samolotu. ");
             Console.WriteLine("2) Usuwanie samolotu. ");
             Console.WriteLine("0) Wyjscie. \n\n\n");
             GetInputToTwo();
@@ -204,7 +218,8 @@ namespace ConsoleApp
             {
                 case 1:
                     ///stworzenie obiektu o klasie wide-body przypisanie następnego id 
-                    Console.WriteLine("");
+                    Wide_body wide_body = new Wide_body();
+                    Console.WriteLine(wide_body.ToString());
                     break;
                 case 2:
                     ///stworzenie obiektu o klasie regional
