@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,10 @@ namespace ConsoleApp
             {
                 sw = new StreamWriter(path, true);
             }
+        Console.WriteLine("tekst: ");
+        string tekst = Console.ReadLine();
+        sw.WriteLine(tekst);
+        sw.Close();
         }
 
 
@@ -60,6 +65,7 @@ namespace ConsoleApp
         {
             while (!exit)
             {
+                CreatingPlaneFile();
                 Console.Clear();
                 PrintHeader();
                 PrintMenu();
@@ -198,6 +204,7 @@ namespace ConsoleApp
             {
                 case 1:
                     ///stworzenie obiektu o klasie wide-body przypisanie następnego id 
+                    Console.WriteLine("");
                     break;
                 case 2:
                     ///stworzenie obiektu o klasie regional
