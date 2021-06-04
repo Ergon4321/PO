@@ -11,9 +11,6 @@ namespace ConsoleApp
         private int seats = 60;
         private int range = 15000;
 
-        public Wide_body()
-        {
-
-        }
+        public Wide_body() { }
     }
 }

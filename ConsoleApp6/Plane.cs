@@ -34,5 +34,10 @@ namespace ConsoleApp
             this.range = range;
             this.id = id;
         }
+        public int Id
+        {
+            get{ return id; }
+            set{ id = value; }
+        }
     }
 }

@@ -23,12 +23,14 @@ namespace ConsoleApp
 
         static void CreatingPlaneFile(int type)
         {
+            
             string path = @"samoloty.txt";
             StreamWriter sw;
 
             if (!File.Exists(path))
             {
                 sw = File.CreateText(path);
+                List<Plane> element_Plane = new List<Plane>();
             }
             else
             {
@@ -40,8 +42,8 @@ namespace ConsoleApp
             switch (type)
             {
                 case 1:
+                    Plane element_Plane = new Plane();
                     tekst = "Szerokokadlubowy.";
-                    Wide_body wide_body = new Wide_body();
                     break;
                 case 2:
                     tekst = "Regional.";
