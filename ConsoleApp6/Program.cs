@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp6
+namespace ConsoleApp
 {
     class Program
     {
@@ -16,14 +16,31 @@ namespace ConsoleApp6
         static void Main(string[] args)
         {
             Program program = new Program();
-            Narrow_body narrow1 = new Narrow_body();
+            program.RunMenu();
         }
+
+
+        static void CreatingPlaneFile()
+        {
+            string path = @"samoloty.txt";
+            StreamWriter sw;
+
+            if (!File.Exists(path))
+            {
+                sw = File.CreateText(path);
+            }
+            else
+            {
+                sw = new StreamWriter(path, true);
+            }
+        }
+
 
         public void PrintHeader()
         {
             Console.WriteLine("+---------------------------------------------------------------------------------------------------------------------+");
             Console.WriteLine("+                                                  Witaj w systemie                                                   +");
-            Console.WriteLine("+                                                 rezerwacji biletow                                                  +");
+            Console.WriteLine("+                                                 lini lotniczej M&M                                                  +");
             Console.WriteLine("+---------------------------------------------------------------------------------------------------------------------+\n\n\n\n");
         }
 
@@ -46,14 +63,15 @@ namespace ConsoleApp6
                 Console.Clear();
                 PrintHeader();
                 PrintMenu();
-                SwitchMenu();
+                GetInputToSeven();
+                SwitchMenu(choice);
             }
         }
 
 
-        private void SwitchMenu()
+        private int GetInputToSeven()
         {
-            Console.WriteLine("Prosze wybrac jedna z opcje: ");
+            Console.WriteLine("Prosze wybrac jedna z opcji: ");
 
             temp = Console.ReadLine();
             choice = Convert.ToInt32(temp);
@@ -64,11 +82,50 @@ namespace ConsoleApp6
                 temp = Console.ReadLine();
                 choice = Convert.ToInt32(temp);
             }
+            return choice;
+        }
 
+
+        private int GetInputToTwo()
+        {
+            Console.WriteLine("Prosze wybrac jedna z opcji: ");
+
+            temp = Console.ReadLine();
+            choice = Convert.ToInt32(temp);
+
+            while (choice < 0 || choice > 2)
+            {
+                Console.WriteLine("Wprowadzono niewlasciwe dane, sprobuj ponownie: ");
+                temp = Console.ReadLine();
+                choice = Convert.ToInt32(temp);
+            }
+            return choice;
+        }
+
+
+        private int GetInputToThree()
+        {
+            Console.WriteLine("Prosze wybrac jedna z opcji: ");
+
+            temp = Console.ReadLine();
+            choice = Convert.ToInt32(temp);
+
+            while (choice < 0 || choice > 3)
+            {
+                Console.WriteLine("Wprowadzono niewlasciwe dane, sprobuj ponownie: ");
+                temp = Console.ReadLine();
+                choice = Convert.ToInt32(temp);
+            }
+            return choice;
+        }
+
+
+        private void SwitchMenu(int choice)
+        {
             switch (choice)
             {
                 case 1:
-                    Console.WriteLine("case 1.");
+                    PlaneMenu();//odnośniki do klas poświęconych danemu menu 
                     break;
                 case 2:
                     Console.WriteLine("case 2.");
@@ -95,8 +152,75 @@ namespace ConsoleApp6
                     Console.WriteLine("Blad Systemu. Nieoczekiwana zmienna.");
                     break;
 
-
             }
         }
+
+
+        private void PlaneMenu()
+        {
+            Console.Clear();
+
+            Console.WriteLine("+---------------------------------------------------------------------------------------------------------------------+\n\n\n");
+            //wypisywanie samolotow z pliku w formacie | id | typ | 
+            Console.WriteLine("1) Dodawanie samolotu. ");
+            Console.WriteLine("2) Usuwanie samolotu. ");
+            Console.WriteLine("0) Wyjscie. \n\n\n");
+            GetInputToTwo();
+            switch (choice)
+            {
+                case 1:
+                    AddingPlane();
+                    break;
+                case 2:
+                    DeletingPlane();
+                    break;
+                case 0:
+                    break;
+                default:
+                    Console.WriteLine("Blad Systemu. Nieoczekiwana zmienna.");
+                    break;
+            }
+
+        }
+
+
+        private void AddingPlane()
+        {
+            Console.Clear();
+            Console.WriteLine("+---------------------------------------------------------------------------------------------------------------------+\n\n\n");
+            Console.WriteLine("1) Szerokokadlubowy. ");
+            Console.WriteLine("2) Regionalny. ");
+            Console.WriteLine("3) Waskokadłubowy. ");
+            Console.WriteLine("0) Anuluj. ");
+            Console.WriteLine("+---------------------------------------------------------------------------------------------------------------------+");
+            GetInputToThree();
+            switch (choice)
+            {
+                case 1:
+                    ///stworzenie obiektu o klasie wide-body przypisanie następnego id 
+                    break;
+                case 2:
+                    ///stworzenie obiektu o klasie regional
+                    break;
+                case 3:
+                    ///stworzenie obiektu o klasie narrow-body
+                    break;
+                case 0:
+                    break;
+                default:
+                    Console.WriteLine("Blad Systemu. Nieoczekiwana zmienna.");
+                    break;
+            }
+        }
+        private void DeletingPlane()
+        {
+            int delId;
+            Console.Clear();
+            Console.WriteLine("Podaj ID samolotu do usunięcia");
+            temp = Console.ReadLine();
+            delId = Convert.ToInt32(temp);
+        }
+
+
     }
 }

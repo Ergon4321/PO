@@ -46,6 +46,7 @@
     <Compile Include="Airport.cs" />
     <Compile Include="CreatingPlaneFile.cs" />
     <Compile Include="Narrow-body.cs" />
+    <Compile Include="Path.cs" />
     <Compile Include="Plane.cs" />
     <Compile Include="Firm.cs" />
     <Compile Include="Client.cs" />

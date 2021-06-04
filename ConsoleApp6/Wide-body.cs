@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp6
+namespace ConsoleApp
 {
     public class Wide_body : Plane
     {
@@ -12,11 +12,9 @@ namespace ConsoleApp6
         private int range = 15000;
         private int id;
 
-        public Wide_body(int seats, int range, int id)
+        public Wide_body()
         {
-            this.seats = seats;
-            this.range = range;
-            this.id = id;
+
         }
     }
 }
