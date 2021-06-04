@@ -43,6 +43,7 @@ namespace ConsoleApp
             {
                 case 1:
                     Plane element_Plane = new Plane();
+                    element_Plane.Get_type();
                     tekst = "Szerokokadlubowy.";
                     break;
                 case 2:
