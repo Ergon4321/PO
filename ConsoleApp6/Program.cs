@@ -96,8 +96,6 @@ namespace ConsoleApp6
                     break;
 
 
-                    /////
-
             }
         }
     }
