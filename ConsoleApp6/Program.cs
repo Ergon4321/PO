@@ -95,6 +95,9 @@ namespace ConsoleApp6
                     Console.WriteLine("Blad Systemu. Nieoczekiwana zmienna.");
                     break;
 
+
+                    /////
+
             }
         }
     }
