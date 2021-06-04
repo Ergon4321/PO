@@ -21,7 +21,7 @@ namespace ConsoleApp
         }
 
 
-        static void CreatingPlaneFile()
+        static void CreatingPlaneFile(int type)
         {
             string path = @"samoloty.txt";
             StreamWriter sw;
@@ -34,9 +34,26 @@ namespace ConsoleApp
             {
                 sw = new StreamWriter(path, true);
             }
-            Console.WriteLine("tekst: ");
-            string tekst = Console.ReadLine();
 
+            string tekst;
+
+            switch (type)
+            {
+                case 1:
+                    tekst = "Szerokokadlubowy.";
+                    Wide_body wide_body = new Wide_body();
+                    break;
+                case 2:
+                    tekst = "Regional.";
+                    break;
+                case 3:
+                    tekst = "Waskokadlubowy.";
+                    break;
+                default:
+                    tekst = "blad";
+                    Console.WriteLine("Blad Systemu. Nieoczekiwana zmienna.");
+                    break;
+            }
             sw.WriteLine(tekst);
             sw.Close();
         }
@@ -50,7 +67,7 @@ namespace ConsoleApp
             int i = 1;
             while((s = sr.ReadLine()) != null)
             {
-                Console.WriteLine(i++ + "." + s);
+                Console.WriteLine(i++ + ". " + s);
             }
             sr.Close();
         }
@@ -217,15 +234,13 @@ namespace ConsoleApp
             switch (choice)
             {
                 case 1:
-                    ///stworzenie obiektu o klasie wide-body przypisanie następnego id 
-                    Wide_body wide_body = new Wide_body();
-                    Console.WriteLine(wide_body.ToString());
+                    CreatingPlaneFile(1);
                     break;
                 case 2:
-                    ///stworzenie obiektu o klasie regional
+                    CreatingPlaneFile(2);
                     break;
                 case 3:
-                    ///stworzenie obiektu o klasie narrow-body
+                    CreatingPlaneFile(3);
                     break;
                 case 0:
                     break;

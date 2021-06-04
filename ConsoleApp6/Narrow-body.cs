@@ -10,7 +10,6 @@ namespace ConsoleApp
     {
         private int seats = 30;
         private int range = 50000;
-        private int id;
 
         public Narrow_body()
         {
