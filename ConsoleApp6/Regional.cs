@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
-    public class Regional
+    public class Regional : Plane
     {
-        private int seats = 100;
-        private int range = 3000;
-
-        public Regional(int seats, int range, int id)
+        public Regional(int id_)
         {
-            this.seats = seats;
-            this.range = range;
+            id = id_;
+            seats = 100;
+            range = 3000;
+            type = "Regionalny";
         }
     }
 }

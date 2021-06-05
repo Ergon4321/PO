@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Airport.cs" />
     <Compile Include="CreatingPlaneFile.cs" />
+    <Compile Include="Manager.cs" />
     <Compile Include="Narrow-body.cs" />
     <Compile Include="Path.cs" />
     <Compile Include="Plane.cs" />

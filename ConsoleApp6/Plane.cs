@@ -8,10 +8,10 @@ namespace ConsoleApp
 {
     public class Plane
     {
-        private int id;
-        private int seats;
-        private int range;
-        private string type;
+        protected int id;
+        protected int seats;
+        protected int range;
+        protected string type;
 
         public int Get_id()
         {
@@ -29,16 +29,23 @@ namespace ConsoleApp
         {
             return this.type;
         }
-        public Plane()
-        {
-
-        }
         public Plane(int id, int seats, int range, string type)
         {
+            this.id = id;
             this.seats = seats;
             this.range = range;
-            this.id = id;
             this.type = type;
+        }
+        public Plane() { }
+
+        public override string ToString()
+        {
+            return $"{id};{type}";
+        }
+
+        public string ToReadableString()
+        {
+            return $"id: {id} type: {type}";
         }
     }
 }

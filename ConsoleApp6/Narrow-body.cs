@@ -8,12 +8,12 @@ namespace ConsoleApp
 {
     public class Narrow_body : Plane
     {
-        private int seats = 125;
-        private int range = 5000;
-
-        public Narrow_body()
+        public Narrow_body(int id_)
         {
-        
+            id = id_;
+            seats = 125;
+            range = 5000;
+            type = "Waskokadlubowy";
         }
     }
 }
