@@ -35,7 +35,7 @@ namespace ConsoleApp
             }
         }
 
-
+        
         //MainMenu switch
         private void MainMenu(int choice)
         {
@@ -48,7 +48,7 @@ namespace ConsoleApp
                     ClientMenu();
                     break;
                 case 3:
-                    Console.WriteLine("case 3.");
+                    AirPortMenu();
                     break;
                 case 4:
                     Console.WriteLine("case 4.");
@@ -291,7 +291,7 @@ namespace ConsoleApp
             data_to_file = data_to_file + temp;
             Console.WriteLine("Imie: ");
             temp = Console.ReadLine();
-            data_to_file = data_to_file + " " + temp;
+            data_to_file = data_to_file + " "+ temp;
             Console.WriteLine("Nazwisko: ");
             temp = Console.ReadLine();
             data_to_file = data_to_file + " " + temp;
@@ -353,7 +353,7 @@ namespace ConsoleApp
             string path = @"samoloty.txt";
             Console.Clear();
             Console.WriteLine("+--------------------------------------------Usun-Klienta-Z-Bazy-Danych-----------------------------------------------+");
-            Console.WriteLine("Lista dostepnych samolotow: ");
+            Console.WriteLine("Lista dostepnych klientow: ");
             ReadingClientFile();
             Console.WriteLine("\n0. Anuluj ");
             Console.WriteLine("+---------------------------------------------------------------------------------------------------------------------+");
@@ -373,9 +373,134 @@ namespace ConsoleApp
             else
             {
                 ///usuwanie po id obiektu samolot z pliku samoloty.txt 
-                PlaneMenu();
+                ClientMenu();
             }
         }
+        //KONIEC METOD KLIENTÓW
+
+
+
+
+
+        //POCZĄTEK METOD LOTNISK
+        /// menu dotyczące lotnisk
+        private void AirPortMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("+--------------------------------------------------Menu-Lotnisk-------------------------------------------------------+");
+            ReadingAirPortFile();
+            Console.WriteLine("\n\n\n1) Dodawanie Lotniska. ");
+            Console.WriteLine("2) Usuwanie Lotniska. ");
+            Console.WriteLine("0) Wyjscie. \n\n\n");
+            GetInputToTwo();
+            switch (choice)
+            {
+                case 1:
+                    AddingAirPort();
+                    break;
+                case 2:
+                    DeletingAirPort();
+                    break;
+                case 0:
+                    break;
+                default:
+                    Console.WriteLine("Blad Systemu. Nieoczekiwana zmienna.");
+                    break;
+            }
+
+        }
+
+        ///dodawania lotniska
+        private void AddingAirPort()
+        {
+            String data_to_file = "";
+            Console.Clear();
+            Console.WriteLine("+-------------------------------------------------Dodaj-Lotnisko------------------------------------------------------+\n\n\n");
+            Console.WriteLine("Kraj: ");
+            temp = Console.ReadLine();
+            data_to_file = data_to_file + temp;
+            Console.WriteLine("Miasto: ");
+            temp = Console.ReadLine();
+            data_to_file = data_to_file + " " + temp;
+            Console.WriteLine("Ilosc samolotow na lotnisku: ");
+            temp = Console.ReadLine();
+            choice = Convert.ToInt32(temp);
+            for(int i = 0; i < choice; i++)
+            {
+                if(i == 0)
+                {
+                    Console.WriteLine("Wprowadz id samolotu: ");
+                    temp = Console.ReadLine();
+                    data_to_file = data_to_file + " " + temp;
+                }
+                else
+                {
+                    Console.WriteLine("Wprowadz id nastepnego samolotu: ");
+                    temp = Console.ReadLine();
+                    data_to_file = data_to_file + ", " + temp;
+                }
+            }
+            AddingAirPortToFile(data_to_file);
+            AirPortMenu();
+        }
+
+        ///korzystanie z menu usuwania lotniska
+        private void DeletingAirPort()
+        {
+            string path = @"lotniska.txt";
+            Console.Clear();
+            Console.WriteLine("+--------------------------------------------Usun-Lotnisko-Z-Bazy-Danych----------------------------------------------+");
+            Console.WriteLine("Lista lotnisk: ");
+            ReadingAirPortFile();
+            Console.WriteLine("\n0. Anuluj ");
+            Console.WriteLine("+---------------------------------------------------------------------------------------------------------------------+");
+            Console.WriteLine("Podaj id lotniska ktore chcesz usunac: ");
+
+            temp = Console.ReadLine();
+            choice = Convert.ToInt32(temp);
+
+            while (choice < 0)
+            {
+                Console.WriteLine("Wprowadzono niewlasciwe dane, sprobuj ponownie: ");
+                temp = Console.ReadLine();
+                choice = Convert.ToInt32(temp);
+            }
+            if (choice == 0)
+                AirPortMenu();
+            else
+            {
+                ///usuwanie po id obiektu samolot z pliku samoloty.txt 
+                AirPortMenu();
+            }
+        }
+
+        /// metoda zapisująca informacje do pliku tekstowego lotniska.txt
+        static void AddingAirPortToFile(string data_to_file)
+        {
+
+            string path = @"lotniska.txt";
+            StreamWriter sw;
+            sw = new StreamWriter(path, true);
+            sw.WriteLine(data_to_file);
+            sw.Close();
+        }
+
+        /// metoda odczytująca informacje z pliku tekstowego lotniska.txt
+        static void ReadingAirPortFile()
+        {
+            string path = @"lotniska.txt";
+            StreamReader sr = File.OpenText(path);
+            {
+                int i = 1;
+                string s = "";
+                while ((s = sr.ReadLine()) != null)
+                {
+                    Console.WriteLine(i++ + ". " + s);//zamiast 'i' id klienta
+                }
+                sr.Close();
+            }
+        }
+        //KONIEC METOD LOTNISK
 
 
 
@@ -465,7 +590,7 @@ namespace ConsoleApp
         }
 
         /// pobranie liczby do obsługi menu w switchu z 3 case'ami
-        private int GetInputToThree()
+        private int GetInputToThree() 
         {
             Console.WriteLine("Prosze wybrac jedna z opcji: ");
 

@@ -8,10 +8,10 @@ namespace ConsoleApp
 {
     public class Plane
     {
+        private int id;
         private int seats;
         private int range;
-        private int id;
-        private int type;
+        private string type;
 
         public int Get_id()
         {
@@ -25,7 +25,7 @@ namespace ConsoleApp
         {
             return this.range;
         }
-        public int Get_type()
+        public string Get_type()
         {
             return this.type;
         }
@@ -33,17 +33,12 @@ namespace ConsoleApp
         {
 
         }
-        public Plane(int id, int seats, int range, int type)
+        public Plane(int id, int seats, int range, string type)
         {
             this.seats = seats;
             this.range = range;
             this.id = id;
             this.type = type;
-        }
-        public int Id
-        {
-            get{ return id; }
-            set{ id = value; }
         }
     }
 }

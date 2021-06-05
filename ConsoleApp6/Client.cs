@@ -8,13 +8,13 @@ namespace ConsoleApp
 {
     public class Client
     {
-        private int id;
+        private string id;
 
         public Client()
         {
 
         }
-        public int Get_id()
+        public string Get_id()
         {
             return this.id;
         }

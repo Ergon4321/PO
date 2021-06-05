@@ -8,8 +8,8 @@ namespace ConsoleApp
 {
     public class Wide_body : Plane
     {
-        private int seats = 60;
-        private int range = 15000;
+        private int seats = 400;
+        private int range = 12000;
 
         public Wide_body() { }
     }

@@ -8,8 +8,8 @@ namespace ConsoleApp
 {
     public class Narrow_body : Plane
     {
-        private int seats = 30;
-        private int range = 50000;
+        private int seats = 125;
+        private int range = 5000;
 
         public Narrow_body()
         {
