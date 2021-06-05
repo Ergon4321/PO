@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
-    public class Regional
+    public class Regional : Plane
     {
         private int seats = 50;
         private int range = 20000;
