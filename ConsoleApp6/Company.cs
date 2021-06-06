@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
-    public class Firm : Client
+    public class Company : Client
     {
         private string nip;
         private string name;
 
-        public Firm(string nip, string name)
+        public Company(string nip, string name)
         {
             this.nip = nip;
             this.name= name;

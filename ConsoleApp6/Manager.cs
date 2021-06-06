@@ -70,6 +70,7 @@ namespace ConsoleApp
                     break;
             }
         }
+        //Wypisanie samolotów na ekran
         void WriteAllPlanesToScreen()
         {
             foreach (Plane plane in planes)
@@ -77,7 +78,7 @@ namespace ConsoleApp
                 Console.WriteLine(plane.ToReadableString());
             }
         }
-
+        //Wypisanie samolotów do pliku
         void WriteAllPlanesToFile()
         {
             string path = @"samoloty.txt";
@@ -89,7 +90,7 @@ namespace ConsoleApp
             }
             sw.Close();
         }
-
+        //dodawanie samolotu
         void AddPlane(int type)
         {
             int nextId = 0;
@@ -296,7 +297,7 @@ namespace ConsoleApp
                     AddingIndClient();
                     break;
                 case 2:
-                    AddingFirmClient();
+                    AddingCompanyClient();
                     break;
                 case 0:
                     ClientMenu();
@@ -332,7 +333,7 @@ namespace ConsoleApp
         }
 
         ///dodawania klientów z firmy-pośrednika
-        private void AddingFirmClient()
+        private void AddingCompanyClient()
         {
             String data_to_file = "";
             Console.Clear();
